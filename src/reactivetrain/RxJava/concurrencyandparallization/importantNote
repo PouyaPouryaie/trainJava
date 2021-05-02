@@ -1,0 +1,32 @@
+######################## 1 ###############################
+if you use scheduler for more parallelization and highly computational
+
+you must be create Executor service with fixed thread (traditional executor)
+and then use this executor in scheduler
+ex:
+
+ExecutorService svc = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 1);
+Observable<MyItem> source = ...
+
+source.flatMap(myItem -> myItem.process().subscribeOn(Schedulers.from(svc)))
+.finallyDo(svc::shutdown)
+.subscribe()
+
+########################## 2 ################################
+
+1 - computation scheduler must be = number of core cpu
+
+2 - io scheduler can be > number of core cpu
+
+########################## 3 ################################
+
+when use executorService for scheduler you must be shutdown when work is done
+
+########################## 4 ################################
+
+for use multiple thread for observers, we use subscribeOn method to get thread pool in observable
+
+########################## 5 ################################
+
+you can use flatMap for create multi observable from emission base on schedulers
+then send result to subscriber, but if emission is very high this solution is over head

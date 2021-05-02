@@ -1,0 +1,9 @@
+functional programming rules :
+
+- function as first class
+- no state
+- pure functions
+- no side effects
+- higher order functions
+    - the function take one or more functions as parameters.
+    - the function returns another function as result.

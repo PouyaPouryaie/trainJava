@@ -1,0 +1,15 @@
+when you do task in concurrency mode and you want avoid sync-blocking code.
+you can use the threadLocal for memory-optimization and context.
+
+1 - when you want use same-context per thread
+for example you want per thread move between multi service and the thread use own data,
+you should be use Thread-local to save data on specific context and use it into the another service.
+
+2 - memory efficiency
+for example you want, use one object per thread. so you init thread and create thread-local for it.
+then every time you call thread, you use same object.
+
+tips:
+# - cleanUp once out of scope.
+# - use local variable
+# - if you use framework, delegate to framework. such as spring
