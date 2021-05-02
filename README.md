@@ -2,7 +2,7 @@
 this repository use for sample code of java-program-language
 
 ## thread
-  sample code base thread concept
+    sample code base thread concept
 ## strean
     sample code base strean concept
 ## reactive
