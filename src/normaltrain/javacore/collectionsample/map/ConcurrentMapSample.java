@@ -1,4 +1,4 @@
-package normaltrain.javacore.datastrutures;
+package normaltrain.javacore.collectionsample.map;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,4 +1,4 @@
-package normaltrain.javacore.datastrutures;
+package normaltrain.javacore.collectionsample.map;
 
 import java.util.HashMap;
 import java.util.List;
