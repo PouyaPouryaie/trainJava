@@ -1,0 +1,20 @@
+If it's already in the classpath, then just obtain it from the classpath instead of from the disk file system. Don't fiddle with relative paths in java.io.File. They are dependent on the current working directory over which you have totally no control from inside the Java code.
+
+Assuming that ListStopWords.txt is in the same package as your FileLoader class, then do:
+
+URL url = getClass().getResource("ListStopWords.txt");
+File file = new File(url.getPath());
+
+Or if all you're ultimately after is actually an InputStream of it:
+
+InputStream input = getClass().getResourceAsStream("ListStopWords.txt");
+
+This is certainly preferred over creating a new File() because the url may not necessarily represent a disk file system path, but it could also represent virtual file system path (which may happen when the JAR is expanded into memory instead of into a temp folder on disk file system) or even a network path which are both not per definition digestable by File constructor.
+
+If the file is -as the package name hints- is actually a fullworthy properties file (containing key=value lines) with just the "wrong" extension, then you could feed the InputStream immediately to the load() method.
+
+Properties properties = new Properties();
+properties.load(getClass().getResourceAsStream("ListStopWords.txt"));
+
+Note: when you're trying to access it from inside static context, then use FileLoader.class (or whatever YourClass.class) instead of getClass() in above examples.
+
