@@ -13,3 +13,9 @@ this repository use for sample code of java-program-language
     sample code base lambda concept
 ## effectiveJava (book)
     effectiveJava book - sample code
+
+
+~~~ 
+streamtrain :
+    1) query: Solving Real-Time Queries Using Java 8 Features
+~~~
