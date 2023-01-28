@@ -1,8 +1,5 @@
 package graph.ex2;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 public class DGraphTopo extends DGraphWtAL {
 
     public DGraphTopo(int size) {
@@ -11,8 +8,9 @@ public class DGraphTopo extends DGraphWtAL {
 
     public int[] topoSort() {
 
-        GNode vertex;
-        Queue<Node> queue = new ArrayDeque<>();
+        Node queue = null;
+        Node tail = null;
+        Node item = null;
         int[] counter = new int[n];
         int[] order = new int[n];
 
@@ -22,32 +20,54 @@ public class DGraphTopo extends DGraphWtAL {
                 j++;
             }
             if (j == 0) {
-                queue.add(new Node(i));
+                if (queue == null) {
+                    queue = new Node(i);
+                    item = queue;
+                    tail = queue;
+                } else {
+                    tail.setNext(new Node(i));
+                    tail = tail.getNext();
+                }
             }
             counter[i] = j;
         }
 
         int i = 0;
-        while (!queue.isEmpty()) {
-            Node index = (Node) queue.poll();
-            order[i] = index.vertex;
+        while (queue != null) {
+            item = queue;
+            order[i] = item.getVertex();
             i++;
-            for (GNode list = OutAL[index.vertex]; list != null; list = list.next) {
+            for (GNode list = OutAL[item.getVertex()]; list != null; list = list.next) {
                 counter[list.nbr]--;
                 if (counter[list.nbr] == 0) {
-                    queue.add(new Node(list.nbr));
+                    tail.setNext(new Node(list.nbr));
+                    tail = tail.getNext();
                 }
             }
+            queue = queue.getNext();
         }
 
         return order;
     }
 
     private static class Node {
-        int vertex;
+        private final int vertex;
+        private Node next;
 
         Node(int vertex) {
             this.vertex = vertex;
+        }
+
+        public int getVertex() {
+            return vertex;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public void setNext(Node next) {
+            this.next = next;
         }
     }
 }
