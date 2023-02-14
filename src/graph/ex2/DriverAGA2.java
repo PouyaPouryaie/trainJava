@@ -3,8 +3,6 @@
 //********************************
 package graph.ex2;
 
-import graph.ex2.DGraphTopo;
-
 import java.util.Scanner;
 
 public class DriverAGA2
