@@ -20,28 +20,28 @@ public class DriverAGA4 {
         Prefs Rankings = new Prefs(n, m);
         System.out.println("For each voter, list the candidates in order of preference.");
 
-//        for (int i = 0; i < m; i++) {
-//            for (int j = 0; j < n; j++) {
-//                x = scan.nextInt();
-//                Rankings.addRank(x, i, j);
-//            }
-//        }
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                x = scan.nextInt();
+                Rankings.addRank(x, i, j);
+            }
+        }
 
-        Rankings.addRank(0, 0, 0);
-        Rankings.addRank(1, 0, 1);
-        Rankings.addRank(2, 0, 2);
-
-        Rankings.addRank(0, 1, 2);
-        Rankings.addRank(1, 1, 1);
-        Rankings.addRank(2, 1, 0);
-
-        Rankings.addRank(0, 2, 0);
-        Rankings.addRank(1, 2, 2);
-        Rankings.addRank(2, 2, 1);
-
-        Rankings.addRank(0, 3, 1);
-        Rankings.addRank(1, 3, 2);
-        Rankings.addRank(2, 3, 0);
+//        Rankings.addRank(0, 0, 0);
+//        Rankings.addRank(1, 0, 1);
+//        Rankings.addRank(2, 0, 2);
+//
+//        Rankings.addRank(0, 1, 2);
+//        Rankings.addRank(1, 1, 1);
+//        Rankings.addRank(2, 1, 0);
+//
+//        Rankings.addRank(0, 2, 0);
+//        Rankings.addRank(1, 2, 2);
+//        Rankings.addRank(2, 2, 1);
+//
+//        Rankings.addRank(0, 3, 1);
+//        Rankings.addRank(1, 3, 2);
+//        Rankings.addRank(2, 3, 0);
 
         System.out.println(Rankings);
 

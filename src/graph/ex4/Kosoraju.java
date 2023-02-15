@@ -9,16 +9,14 @@ public class Kosoraju extends DGraphWtAL {
     }
 
     public int SCC() {
-        reset(-1);
+        reset(Integer.MAX_VALUE);
         Stack<Node> stack = new Stack<>();
-        int c = 0;
-
-        for (int index = 0; index < n; index++) {
-            if (mark[index] == -1) {
-                mark[index] = 1;
-                Node node = new Node(index);
-                for (GNode list = OutAL[index]; list != null; list = list.next) {
-                    if (mark[list.nbr] == -1) {
+        for(int i = 0 ; i < n ; i++){
+            if(mark[i] == Integer.MAX_VALUE){
+                mark[i] = 1;
+                Node node = new Node(i);
+                for (GNode list = OutAL[i]; list != null; list = list.next) {
+                    if(mark[list.nbr] == Integer.MAX_VALUE){
                         mark[list.nbr] = 1;
                         DFS(list, stack);
                         stack.add(new Node(list.nbr));
@@ -28,12 +26,13 @@ public class Kosoraju extends DGraphWtAL {
             }
         }
 
-        reset(-1);
-        while (!stack.empty()) {
+        int c = 0;
+        reset(Integer.MAX_VALUE);
+        while (!stack.empty()){
             Node node = stack.pop();
-            if (mark[node.getName()] == -1) {
-                c += 1;
-                mark[node.getName()] = c;
+            if(mark[node.getVertex()] == Integer.MAX_VALUE){
+                c = c + 1;
+                mark[node.getVertex()] = c;
                 DFSC(node, c);
             }
         }
@@ -41,34 +40,41 @@ public class Kosoraju extends DGraphWtAL {
         return c;
     }
 
-    private class Node {
-        private final int name;
-
-        Node(int name) {
-            this.name = name;
-        }
-
-        public int getName() {
-            return name;
-        }
-    }
-
-    private void DFSC(Node node, int c) {
-        for (GNode list = InAL[node.getName()]; list != null; list = list.next) {
-            if (mark[list.nbr] == -1) {
+    private void DFSC(Node node, int c){
+        for (GNode list = InAL[node.getVertex()]; list != null; list = list.next) {
+            if(mark[list.nbr]==Integer.MAX_VALUE){
                 mark[list.nbr] = c;
                 DFSC(new Node(list.nbr), c);
             }
         }
     }
 
-    private void DFS(GNode node, Stack<Node> stack) {
+    private void DFS(GNode node, Stack<Node> stack){
         for (GNode list = OutAL[node.nbr]; list != null; list = list.next) {
-            if (mark[list.nbr] == -1) {
+            if(mark[list.nbr]==Integer.MAX_VALUE){
                 mark[list.nbr] = 1;
                 DFS(list, stack);
                 stack.add(new Node(list.nbr));
             }
+        }
+    }
+
+    private static class Node {
+        private final int vertex;
+
+        Node(int vertex) {
+            this.vertex = vertex;
+        }
+
+        public int getVertex() {
+            return vertex;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "vertex=" + vertex +
+                    '}';
         }
     }
 }
