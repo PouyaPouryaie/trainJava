@@ -17,14 +17,14 @@ public class Kosoraju extends DGraphWtAL {
             if (mark[index] == -1) {
                 mark[index] = 1;
                 Node node = new Node(index);
-                stack.add(node);
                 for (GNode list = OutAL[index]; list != null; list = list.next) {
-                    if (mark[list.nbr] == Integer.MAX_VALUE) {
+                    if (mark[list.nbr] == -1) {
                         mark[list.nbr] = 1;
-                        stack.add(new Node(list.nbr));
                         DFS(list, stack);
+                        stack.add(new Node(list.nbr));
                     }
                 }
+                stack.add(node);
             }
         }
 
@@ -66,8 +66,8 @@ public class Kosoraju extends DGraphWtAL {
         for (GNode list = OutAL[node.nbr]; list != null; list = list.next) {
             if (mark[list.nbr] == -1) {
                 mark[list.nbr] = 1;
-                stack.add(new Node(list.nbr));
                 DFS(list, stack);
+                stack.add(new Node(list.nbr));
             }
         }
     }
