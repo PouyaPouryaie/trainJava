@@ -11,11 +11,12 @@ public class Prefs extends Voting {
 
     public void prefList() {
 
-        //first step: define graph which use to kosoraju
-        Kosoraju sccGraph = new Kosoraju(rows);
         int comps;
 
-        //second step: Construct a directed graph G, where each vertex represents an item being ranked.
+        //first step: define graph and find SCC,so create graph object of kosoraju class
+        Kosoraju sccGraph = new Kosoraju(rows);
+
+        //second step: Construct a directed graph G, where each vertex represents an item being ranked
         for(int i = 0; i<rows-1;i++){
             for(int j = i+1; j<rows;j++){
                 int point = 0;
@@ -34,7 +35,7 @@ public class Prefs extends Voting {
             }
         }
 
-        //third step: find SCC of graph
+        //third step: find SCC in graph and return number of SCC
         comps = sccGraph.SCC();
 
         //fourth step: define an Array in order to store list of vertex of each SCC group that There found at previous step.
@@ -50,10 +51,9 @@ public class Prefs extends Voting {
         }
 
 
+        //fifth step: build G'
         DGraphTopo dGraphTopo = new DGraphTopo(comps);
 
-
-        //fifth step: build G'
         for(int i = 0 ; i < nodes.length-1; i++){
             for(int vertexSource: nodes[i].SCCList){
                 for(int j = 0 ; j < nodes.length-1; j++){
