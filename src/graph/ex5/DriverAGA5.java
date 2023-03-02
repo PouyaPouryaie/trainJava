@@ -25,22 +25,22 @@ public class DriverAGA5
 	t = scan.nextInt();	
 	DGraphWtAL Graph = new DGraphWtAL(n);
 	System.out.println("Enter edges (pairs of indices, capacity, and initial flow):");
-//	for(int i=0;i<m;i++) {
-//	    x = scan.nextInt();
-//	    y = scan.nextInt();
-//	    cap = scan.nextInt();
-//	    f = scan.nextInt();
-//	    Graph.addEdge(x,y,cap,f);
-//	}
+	for(int i=0;i<m;i++) {
+	    x = scan.nextInt();
+	    y = scan.nextInt();
+	    cap = scan.nextInt();
+	    f = scan.nextInt();
+	    Graph.addEdge(x,y,cap,f);
+	}
 
-		Graph.addEdge(0,1,5,3);
-		Graph.addEdge(0,2,8,0);
-		Graph.addEdge(1,3,3,0);
-		Graph.addEdge(1,4,3,3);
-		Graph.addEdge(2,4,2,0);
-		Graph.addEdge(2,5,4,0);
-		Graph.addEdge(3,5,7,0);
-		Graph.addEdge(4,5,4,3);
+//		Graph.addEdge(0,1,5,3);
+//		Graph.addEdge(0,2,8,0);
+//		Graph.addEdge(1,3,3,0);
+//		Graph.addEdge(1,4,3,3);
+//		Graph.addEdge(2,4,2,0);
+//		Graph.addEdge(2,5,4,0);
+//		Graph.addEdge(3,5,7,0);
+//		Graph.addEdge(4,5,4,3);
 
 	FlowGraph fpair = new FlowGraph(Graph, s, t);
 
