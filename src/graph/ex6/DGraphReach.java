@@ -20,7 +20,7 @@ public class DGraphReach extends DGraphWtAL {
         for (GNode list = OutAL[x]; list != null; list = list.next) {
             if (list.weight != 0 && mark[list.nbr] == -1 && !findTarget) {
                 mark[list.nbr] = 1;
-                path(list, stack, y);
+                DFS(list, stack, y);
                 if(findTarget){
                     stack.add(new Node(list.nbr));
                     break;
@@ -41,7 +41,7 @@ public class DGraphReach extends DGraphWtAL {
     }
 
 
-    private void path(GNode node, List<Node> stack, int target) {
+    private void DFS(GNode node, List<Node> stack, int target) {
         for (GNode list = OutAL[node.nbr]; list != null && list.weight != 0; list = list.next) {
             if(findTarget){
                 break;
@@ -53,7 +53,7 @@ public class DGraphReach extends DGraphWtAL {
                     break;
                 } else if (mark[list.nbr] == -1) {
                     mark[list.nbr] = 1;
-                    path(list, stack, target);
+                    DFS(list, stack, target);
                     if(findTarget){
                         stack.add(new Node(list.nbr));
                     }

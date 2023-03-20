@@ -48,12 +48,12 @@ public class Projects {
             if(residualGraph.mark[node.nbr] == -1 && node.weight != 0){
                 residualGraph.mark[node.nbr] = 1;
                 selectedProjects[node.nbr] = 1;
-                path(node, selectedProjects);
+                preProjects(node, selectedProjects);
             }
         }
     }
 
-    private void path(DGraphWtAL.GNode node, int[] selectProject) {
+    private void preProjects(DGraphWtAL.GNode node, int[] selectProject) {
         for (DGraphWtAL.GNode list = residualGraph.InAL[node.nbr]; list != null; list = list.next) {
             if(preRequiredNodes.contains(projectNodes.get(list.nbr))){
                 residualGraph.mark[list.nbr] = 1;
