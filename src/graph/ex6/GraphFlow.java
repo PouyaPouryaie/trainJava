@@ -27,7 +27,6 @@ public class GraphFlow {
     public void FordFulk(){
         boolean canMove = true;
         while (canMove){
-            System.out.println(residual);
             int[] reach = residual.reach(source, target);
             if(reach != null && reach.length > 0){
                 int minValue = Integer.MAX_VALUE;
