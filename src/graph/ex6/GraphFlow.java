@@ -1,24 +1,25 @@
 package graph.ex6;
 
 public class GraphFlow {
-    int source;
-    int target;
+
     DGraphWtAL network;
     DGraphReach residual;
+    int source;
+    int target;
 
     public GraphFlow(DGraphWtAL graph, int s, int t) {
-        this.source = s;
-        this.target = t;
-        this.network = graph;
+        network = graph;
+        source = s;
+        target = t;
         residual = new DGraphReach(graph.n);
-        for(int index = 0 ; index < graph.n ; index++){
-            for (DGraphWtAL.GNode node = graph.OutAL[index]; node != null; node = node.next) {
-                if(node.mark > 0){
-                    int newValue = node.weight - node.mark;
-                    residual.addEdge(index, node.nbr, (newValue), 0);
-                    residual.addEdge(node.nbr, index, (node.mark), 0);
+        
+        for(int i = 0 ; i < graph.n ; i++){
+            for (DGraphWtAL.GNode list = graph.OutAL[i]; list != null; list = list.next) {
+                if(list.mark > 0){
+                    residual.addEdge(i, list.nbr, list.weight - list.mark, 0);
+                    residual.addEdge(list.nbr, i, list.mark, 0);
                 }else{
-                    residual.addEdge(index, node.nbr, (node.weight), 0);
+                    residual.addEdge(i, list.nbr, list.weight, 0);
                 }
             }
         }
@@ -54,10 +55,10 @@ public class GraphFlow {
                     for (DGraphWtAL.GNode node = network.OutAL[index]; node != null; node = node.next) {
                         if(node.mark > 0){
                             int newValue = node.weight - node.mark;
-                            residual.addEdge(index, node.nbr, (newValue), 0);
-                            residual.addEdge(node.nbr, index, (node.mark), 0);
+                            residual.addEdge(index, node.nbr, node.weight - node.mark, 0);
+                            residual.addEdge(node.nbr, index, node.mark, 0);
                         }else{
-                            residual.addEdge(index, node.nbr, (node.weight), 0);
+                            residual.addEdge(index, node.nbr, node.weight, 0);
                         }
                     }
                 }
