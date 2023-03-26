@@ -14,7 +14,6 @@ public class Karger extends GraphWtAL {
     public Karger(int numberOfVertices, int numberOfEdges) {
         super(numberOfVertices);
         this.edges = new Edge[numberOfEdges];
-        this.numberEdges = numberOfEdges;
     }
 
     public void addEdge(int x, int y) {
@@ -29,7 +28,7 @@ public class Karger extends GraphWtAL {
     public int minCut(int pieces, int times){
 
         int nodeSize = super.n;
-        int edgeSize = numberEdges;
+        int edgeSize = edges.length;
         int candidateMinCut = Integer.MAX_VALUE;
         Edge[] candidateEdge = new Edge[edgeSize];
         UnionFind candidateFind = new UnionFind(nodeSize);
