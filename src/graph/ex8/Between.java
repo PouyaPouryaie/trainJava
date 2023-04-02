@@ -117,14 +117,4 @@ public class Between extends GraphWtAL{
             return target;
         }
     }
-
-    private class SLLNode {
-        int vertex;
-        SLLNode next;
-
-        SLLNode(int index) {
-            vertex = index;
-            next = null;
-        }
-    }
 }
