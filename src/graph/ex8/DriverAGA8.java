@@ -19,18 +19,18 @@ public class DriverAGA8
 	System.out.print("Number of edges: ");
 	m = scan.nextInt();
 	Between Graph = new Between(n);
-//	System.out.println("Enter edges (pairs of indices):");
-//	for(int i=0;i<m;i++) {
-//	    x = scan.nextInt();
-//	    y = scan.nextInt();
-//	    Graph.addEdge(x,y,1);
-//	}
+	System.out.println("Enter edges (pairs of indices):");
+	for(int i=0;i<m;i++) {
+	    x = scan.nextInt();
+	    y = scan.nextInt();
+	    Graph.addEdge(x,y,1);
+	}
 
-	Graph.addEdge(0, 1, 1);
-	Graph.addEdge(1, 2, 1);
-	Graph.addEdge(1, 3, 1);
-	Graph.addEdge(2, 4, 1);
-	Graph.addEdge(3, 4, 1);
+//	Graph.addEdge(0, 1, 1);
+//	Graph.addEdge(0, 2, 1);
+//	Graph.addEdge(1, 2, 1);
+//	Graph.addEdge(1, 3, 1);
+//	Graph.addEdge(2, 4, 1);
 
 	Graph.betFind();
 	

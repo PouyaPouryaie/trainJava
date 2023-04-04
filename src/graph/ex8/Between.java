@@ -1,7 +1,5 @@
 package graph.ex8;
 
-import normaltrain.interfacetrain.A;
-
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -69,7 +67,7 @@ public class Between extends GraphWtAL{
     @Override
     public String toString() {
         StringBuilder score = new StringBuilder();
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("##.##");
         df.setRoundingMode(RoundingMode.DOWN);
 
         for(int i = 0 ; i < this.n; i++){
