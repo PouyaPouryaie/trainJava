@@ -18,11 +18,11 @@ public class BinarySearch {
 //        int[] numbers = new int[]{-1,0,3,5,9,12};
         int[] numbers = new int[]{5};
         int target = 5;
-        int result = fundNumber(numbers, target);
+        int result = foundNumber(numbers, target);
         System.out.printf("result is " + result);
     }
 
-    public static int fundNumber(int[] numbers, int target) {
+    public static int foundNumber(int[] numbers, int target) {
         int lowNumber = 0;
         int maxNumber = numbers.length - 1;
         int result = -1;
