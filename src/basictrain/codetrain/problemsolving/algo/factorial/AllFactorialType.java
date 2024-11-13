@@ -1,4 +1,4 @@
-package basictrain.javacore.factorial;
+package basictrain.codetrain.problemsolving.algo.factorial;
 
 /**
  * normal factorial
