@@ -34,9 +34,36 @@ public class EmployeeMainApp {
         employeeList.add(new Employee(277, "Eric Smith", 31, "Male", "Product Development", 2012, 35700.0));
     }
 
+    public static void loadEmpDuplicateRecords() {
+        employeeList.add(new Employee(111, "Jennifer Flores", 32, "Female", "HR", 2011, 25000.0));
+        employeeList.add(new Employee(111, "Jennifer Flores", 33, "Female", "HR", 2011, 25000.0));
+        employeeList.add(new Employee(122, "Mr. Jacob Parker", 25, "Male", "Sales And Marketing", 2015, 13500.0));
+        employeeList.add(new Employee(122, "Mr. Jacob Parker", 20, "Male", "Sales And Marketing", 2015, 13500.0));
+        employeeList.add(new Employee(133, "Tony Williams", 29, "Male", "Infrastructure", 2012, 18000.0));
+        employeeList.add(new Employee(133, "Tony Williams", 30, "Male", "Infrastructure", 2012, 18000.0));
+    }
+
     public static void main(String[] args) {
 
+        loadEmpDuplicateRecords();
+
+        System.err.println("0. How to find maximum age for each duplicate records");
+
+        Map<Integer, Optional<Employee>> maximumAgeForEachEmployeeId = employeeList.stream()
+                .collect(Collectors.groupingBy(Employee::getId, Collectors.maxBy(Comparator.comparingInt(Employee::getAge))));
+        maximumAgeForEachEmployeeId.forEach((empId, employee) -> {
+            System.out.printf("key: { %s }, value: { %s }%n", empId, employee);
+        });
+
+        try {
+            employeeList.clear();
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         loadEmpRecords();
+
 
         System.err.println("1. How many male and female employees are there in the organization?");
         employeeList.stream().collect(Collectors.groupingBy(employee -> employee.gender)).forEach((s, employees) -> System.out.printf("count of %s in list is %s%n", s, employees.size()));
