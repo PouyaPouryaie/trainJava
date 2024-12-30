@@ -15,6 +15,6 @@ public class App {
         result = bank.newAccount(2, "mid", 2000);
         System.out.println(result);
 
-        System.out.println(bank.toString());
+        System.out.println(bank);
     }
 }

@@ -20,10 +20,10 @@ public class Bank {
     }
 
     public String toString() {
-        String result = "The bank has " + accounts.size() + " accounts.";
+        StringBuilder result = new StringBuilder("The bank has " + accounts.size() + " accounts.");
         for (BankInterface ba : accounts.values())
-            result += "\n\t" + ba.toString();
-        return result;
+            result.append("\n\t").append(ba.toString());
+        return result.toString();
     }
 
 }

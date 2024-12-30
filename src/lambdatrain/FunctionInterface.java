@@ -19,11 +19,11 @@ public class FunctionInterface {
     //end sample
 
     //sample 2 static method reference
-    interface Sayable{
+    interface SayAble{
         void say(String s);
     }
 
-    public static void saySomthing(String s){
+    public static void saySomething(String s){
         System.out.println("hello " + s);
     }
     //end sample
@@ -41,8 +41,8 @@ public class FunctionInterface {
 
 
     //sample 4 instance method reference
-    void saySometingInstance(String s){
-        System.out.println(" my firend instance is " + s);
+    void saySomethingInstance(String s){
+        System.out.println(" my friend instance is " + s);
     }
     //end sample
 
@@ -56,7 +56,7 @@ public class FunctionInterface {
         System.out.println(" 10 - 20 = " + apply(20, 10, subtraction.swap()));
 
         //2
-        Sayable sayable = FunctionInterface::saySomthing;
+        SayAble sayable = FunctionInterface::saySomething;
         sayable.say("pouya");
 
         //3
@@ -66,7 +66,7 @@ public class FunctionInterface {
         System.out.println("float add is " + add2.apply(2.2f, 4.2f));
 
         //4
-        Sayable sayableInstance = new FunctionInterface()::saySometingInstance;
-        sayableInstance.say("hossein");
+        SayAble sayAbleInstance = new FunctionInterface()::saySomethingInstance;
+        sayAbleInstance.say("hossein");
     }
 }

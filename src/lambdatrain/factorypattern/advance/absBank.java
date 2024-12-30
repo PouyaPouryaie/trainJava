@@ -3,11 +3,11 @@ package lambdatrain.factorypattern.advance;
 public abstract class absBank implements BankInterface{
 
     protected int money=0;
-    protected int acctnum;
+    protected int acctNum;
     protected String name;
 
-    public absBank(int acctnum,String name, int money) {
-        this.acctnum = acctnum;
+    public absBank(int acctNum, String name, int money) {
+        this.acctNum = acctNum;
         this.name = name;
         this.money = money;
     }
@@ -25,7 +25,7 @@ public abstract class absBank implements BankInterface{
 
     @Override
     public int getAcctNum() {
-        return acctnum;
+        return acctNum;
     }
 
     @Override

@@ -3,7 +3,7 @@ package lambdatrain.factorypattern.advance;
 public enum AccountFactories implements AccountFactory{
 
     SAVING("saving", (x,y, z) -> new RegularBank(x, y)),
-    DEPOSITE("depo", (x,y, z) -> new DepositeBank(x, y, z));
+    DEPOSIT("deposit", (x, y, z) -> new DepositBank(x, y, z));
 
     private String name;
     private AccountFactory af;
@@ -14,8 +14,8 @@ public enum AccountFactories implements AccountFactory{
     }
 
     @Override
-    public BankInterface create(int acctnum, String name, int money) {
-        return af.create(acctnum, name, money);
+    public BankInterface create(int acctNum, String name, int money) {
+        return af.create(acctNum, name, money);
     }
 
     @Override
