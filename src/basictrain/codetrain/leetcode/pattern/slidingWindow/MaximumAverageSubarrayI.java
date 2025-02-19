@@ -40,6 +40,25 @@ public class MaximumAverageSubarrayI {
         return max;
     }
 
+    public double secondSolution(int[] nums, int k) {
+        double result = 0;
+
+        for(int i=0; i<= nums.length - k; i++){
+            int j = 0;
+            int sum = 0;
+
+            while(j < k){
+                sum += nums[j+i];
+                j++;
+            }
+            double avg = (double) sum / k;
+            if(avg > result){
+                result = avg;
+            }
+        }
+        return result;
+    }
+
 
     public static void main(String[] args) {
         int[] data = {1, 12, -5, -6, 50, 3};

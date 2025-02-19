@@ -1,4 +1,4 @@
-package basictrain.codetrain.leetcode.algorithm1;
+package basictrain.codetrain.leetcode.pattern.slidingWindow;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -100,5 +100,28 @@ public class LongestSubstringWithoutRepeatingCharacters {
         }
 
         return longest;
+    }
+
+    public static int thirdSolution(String s) {
+
+        if (s == null || s.isEmpty()) return 0;
+        char[] chars = s.toCharArray();
+        int max = 0;
+        int length = 0;
+        String result = "";
+        for (int i = 0; i < chars.length; i++) {
+            if (!result.contains(String.valueOf(chars[i]))) {
+                result += String.valueOf(chars[i]);
+            } else {
+                while (result.contains(String.valueOf(chars[i]))) {
+                    result = result.substring(1);
+                    length--;
+                }
+                result += String.valueOf(chars[i]);
+            }
+            length++;
+            max = Math.max(max, length);
+        }
+        return max;
     }
 }
