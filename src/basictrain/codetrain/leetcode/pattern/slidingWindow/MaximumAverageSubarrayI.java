@@ -1,10 +1,10 @@
-package basictrain.codetrain.leetcode.algorithm1.interview;
+package basictrain.codetrain.leetcode.pattern.slidingWindow;
 
 /*
  >>> Sliding Window pattern
      The Sliding Window pattern is used to find a subarray or substring that satisfies a specific condition,
      optimizing the time complexity by maintaining a window of elements.
-     Use this pattern when dealing with problems involving contiguous subarrays or substrings.
+     Use this pattern when dealing with problems involving contiguous subarray or substring.
 
 
 You are given an integer array nums consisting of n elements, and an integer k.
@@ -29,7 +29,7 @@ public class MaximumAverageSubarrayI {
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
 
-            if(i >= k-1) {
+            if (i >= k - 1) {
                 double avg = (double) sum / k;
                 max = Math.max(max, avg);
                 sum -= nums[index];
@@ -41,8 +41,8 @@ public class MaximumAverageSubarrayI {
     }
 
 
-    public static void main(String args[]) {
-        int[] data = {1,12,-5,-6,50,3};
+    public static void main(String[] args) {
+        int[] data = {1, 12, -5, -6, 50, 3};
         MaximumAverageSubarrayI obj = new MaximumAverageSubarrayI();
         double result = obj.findMaxAverage(data, 4);
         System.out.printf("Result is: %s", result);
