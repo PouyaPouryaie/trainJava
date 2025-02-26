@@ -1,4 +1,4 @@
-package basictrain.codetrain.leetcode.algorithm1.interview;
+package basictrain.codetrain.leetcode.pattern.twopointers;
 
 import java.util.Arrays;
 
