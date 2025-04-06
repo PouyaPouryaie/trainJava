@@ -241,5 +241,28 @@ public class EmployeeMainApp {
         System.out.println("Age: " + oldEmployee.get().getAge());
         System.out.println("Department: " + oldEmployee.get().getDepartment());
 
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.err.println(">>>>> Extra");
+        List<Integer> numbers = Arrays.asList(1, 2, 2, 3, 3, 3, 4);
+        System.err.println("16. Print the numbers along with their frequencies");
+        Map<Integer, Long> frequencyMap = numbers.stream().collect(Collectors.groupingBy(num -> num, Collectors.counting()));
+        frequencyMap.forEach((k, v) -> System.out.println(k + " -> " + v));
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.err.println("17. Find the duplicate numbers in the given list");
+        Set<Integer> duplicates = numbers.stream().filter(num -> Collections.frequency(numbers, num) > 1)
+                .collect(Collectors.toSet());
+        System.out.println("Duplicate Numbers: " + duplicates);
+
     }
 }
