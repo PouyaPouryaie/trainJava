@@ -13,13 +13,9 @@ public class OptionalTest {
         // Get the maximum of odd integers from the stream
         OptionalInt maxOdd = IntStream.of(10,20,30).filter(n -> n % 2 == 1).max();
 
-        if(maxOdd.isPresent()){
-            int value = maxOdd.getAsInt();
-            System.out.println("Maximum odd integer is " + value);
-        }
-        else {
-            System.out.println("Stream is empty.");
-        }
+        maxOdd.ifPresentOrElse(
+                (optionalInt) -> System.out.println("Maximum odd integer is " + maxOdd.getAsInt()),
+                () -> System.out.println("stream is empty"));
 
 
         // Get the maximum of odd integers from the stream
